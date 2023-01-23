@@ -1,4 +1,5 @@
 ﻿using ECS.Components.Blocks;
+using ECS.Components.MoveComponents;
 using ECS.Components.Tags;
 using ECS.Components.TransformComponents;
 using Leopotam.Ecs;

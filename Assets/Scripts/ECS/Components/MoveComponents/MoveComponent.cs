@@ -1,4 +1,4 @@
-﻿namespace ECS.Components.TransformComponents
+﻿namespace ECS.Components.MoveComponents
 {
     public struct MoveComponent
     {

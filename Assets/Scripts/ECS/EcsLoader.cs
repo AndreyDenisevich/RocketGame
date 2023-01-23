@@ -1,5 +1,6 @@
 using System;
 using Data;
+using ECS.Systems.CameraSystems;
 using ECS.Systems.InitSystems;
 using ECS.Systems.InputSystems;
 using ECS.Systems.PlayerSystems;
@@ -10,6 +11,7 @@ namespace ECS
 {
     public class EcsLoader : MonoBehaviour
     {
+        private Camera _mainCamera;
         private GameData _gameData;
         private EcsWorld _world;
         private EcsSystems _initSystems;
@@ -17,6 +19,7 @@ namespace ECS
         private EcsSystems _fixedUpdateSystems;
         void Start()
         {
+            _mainCamera = Camera.main;
             _gameData = GameData.GetFromResources;
             _world = new EcsWorld();
             _initSystems = new EcsSystems(_world);
@@ -35,7 +38,8 @@ namespace ECS
         {
             _initSystems.
                 Add(new GameInitSystem()).
-                Add(new PlayerInitSystem());
+                Add(new PlayerInitSystem()).
+                Add(new CameraInitSystem());
             
             _initSystems.Init();
         }
@@ -52,7 +56,8 @@ namespace ECS
         private void InitFixedUpdateSystems()
         {
             _fixedUpdateSystems.
-                Add(new PlayerMoveSystem());
+                Add(new PlayerMoveSystem()).
+                Add(new CameraFollowSystem());
             
             _fixedUpdateSystems.Init();
         }
@@ -60,7 +65,8 @@ namespace ECS
         private void InjectToInitSystems()
         {
             _initSystems.
-                Inject(_gameData.PlayerData);
+                Inject(_gameData.PlayerData).
+                Inject(_mainCamera);
         }
         
         void Update()
