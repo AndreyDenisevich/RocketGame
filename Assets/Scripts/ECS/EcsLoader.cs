@@ -1,9 +1,11 @@
 using System;
 using Data;
+using ECS.Components.Events;
 using ECS.Systems.CameraSystems;
 using ECS.Systems.InitSystems;
 using ECS.Systems.InputSystems;
 using ECS.Systems.PlayerSystems;
+using ECS.Systems.UISystems;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -11,6 +13,9 @@ namespace ECS
 {
     public class EcsLoader : MonoBehaviour
     {
+        [SerializeField] 
+        private UI.UI ui;
+        
         private Camera _mainCamera;
         private GameData _gameData;
         private EcsWorld _world;
@@ -29,6 +34,7 @@ namespace ECS
             InjectToInitSystems();
             InitSystems();
             
+            InjectToUpdateSystems();
             InitUpdateSystems();
             
             InitFixedUpdateSystems();
@@ -48,7 +54,8 @@ namespace ECS
             _updateSystems.
                 Add(new InputSystem()).
                 Add(new PlayerInputSystem()).
-                Add(new PlayerDirectionSystem());
+                Add(new PlayerDirectionSystem()).
+                Add(new ViewLoseScreenSystem());
             
             _updateSystems.Init();
         }
@@ -57,6 +64,7 @@ namespace ECS
         {
             _fixedUpdateSystems.
                 Add(new PlayerMoveSystem()).
+                Add(new PlayerCollisionSystem()).
                 Add(new CameraFollowSystem());
             
             _fixedUpdateSystems.Init();
@@ -68,7 +76,12 @@ namespace ECS
                 Inject(_gameData.PlayerData).
                 Inject(_mainCamera);
         }
-        
+        private void InjectToUpdateSystems()
+        {
+            _updateSystems.
+                Inject(ui);
+        }
+
         void Update()
         {
             _updateSystems.Run();

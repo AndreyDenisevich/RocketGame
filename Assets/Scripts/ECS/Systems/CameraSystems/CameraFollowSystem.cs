@@ -8,7 +8,7 @@ namespace ECS.Systems.CameraSystems
 {
     public class CameraFollowSystem: IEcsRunSystem
     {
-        private readonly EcsFilter<CameraTag, FollowComponent,OffsetComponent, TransformComponent>
+        private readonly EcsFilter<CameraTag, FollowComponent, OffsetComponent, TransformComponent>
             _cameraFollowFilter = null;
         public void Run()
         {
@@ -20,6 +20,7 @@ namespace ECS.Systems.CameraSystems
 
                 var destinationPosition = followComponent.target.position + offsetComponent.offset;
                 destinationPosition.x = transform.position.x;
+                destinationPosition.y = Mathf.Clamp(destinationPosition.y, transform.position.y, Mathf.Infinity);
                 
                 var smoothedPosition = Vector3.Lerp(transform.position, destinationPosition,
                     followComponent.followSmoothness);

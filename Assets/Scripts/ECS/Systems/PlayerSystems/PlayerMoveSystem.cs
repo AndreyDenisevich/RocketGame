@@ -11,7 +11,7 @@ namespace ECS.Systems.PlayerSystems
     {
         private readonly
             EcsFilter<PlayerTag, RigidbodyComponent, MoveComponent>.Exclude<MovementStopped>
-            _playerMoveFilter;
+            _playerMoveFilter = null;
         public void Run()
         {
             foreach (var i in _playerMoveFilter)

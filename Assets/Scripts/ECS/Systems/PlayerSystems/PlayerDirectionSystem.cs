@@ -10,7 +10,7 @@ namespace ECS.Systems.PlayerSystems
     {
         private readonly
             EcsFilter<PlayerTag, TransformComponent, DirectionComponent>.Exclude<MovementStopped>
-            _playerMoveFilter;
+            _playerMoveFilter = null;
         
         public void Run()
         {

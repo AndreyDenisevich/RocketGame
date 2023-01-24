@@ -9,7 +9,7 @@ namespace ECS.Systems.PlayerSystems
 {
     public class PlayerInputSystem: IEcsRunSystem
     {
-        private readonly EcsFilter<PlayerTag, DragComponent, DirectionComponent> _playerDirectionFilter;
+        private readonly EcsFilter<PlayerTag, DragComponent, DirectionComponent> _playerDirectionFilter = null;
         public void Run()
         {
             foreach (var i in _playerDirectionFilter)
