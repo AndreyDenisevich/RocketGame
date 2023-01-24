@@ -4,7 +4,7 @@ using ECS.Components.TransformComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace ECS.Systems.CameraSystems
+namespace ECS.Systems.InitSystems
 {
     public class CameraInitSystem: IEcsInitSystem
     {
@@ -16,6 +16,7 @@ namespace ECS.Systems.CameraSystems
         {
             var cameraEntity = _world.NewEntity();
             cameraEntity.Get<CameraTag>();
+            cameraEntity.Get<FollowPlayerTag>();
             ref var transformComponent = ref cameraEntity.Get<TransformComponent>();
             ref var followComponent = ref cameraEntity.Get<FollowComponent>();
             ref var offsetComponent = ref cameraEntity.Get<OffsetComponent>();

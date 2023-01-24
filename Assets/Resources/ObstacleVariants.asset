@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd058d7f50cf4391944bf869509d74f0, type: 3}
+  m_Name: ObstacleVariants
+  m_EditorClassIdentifier: 
+  obstaclesLength: 12
+  obstaclesPrefabs:
+  - {fileID: 3283054909566043850, guid: 50ccdea7bd99c70449e1c0d7d5b0175f, type: 3}
+  - {fileID: 3283054909566043850, guid: bfc4e7f986b768f4daa7ea132d6f997c, type: 3}
+  - {fileID: 3283054909566043850, guid: 99386123c08f4c347bbae2139ce04b47, type: 3}
+  - {fileID: 3283054909566043850, guid: ec2de0c56cd3f23488c349c2f1fc7cee, type: 3}
+  - {fileID: 3283054909566043850, guid: 122866da894259e41a957a3270fbdecf, type: 3}
+  _groundPrefab: {fileID: 8488242355806059310, guid: a7f2d11c28e9a3b45b4b9efad3685a77, type: 3}

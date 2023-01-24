@@ -4,11 +4,11 @@ using ECS.Components.TransformComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace ECS.Systems.CameraSystems
+namespace ECS.Systems.FollowSystems
 {
-    public class CameraFollowSystem: IEcsRunSystem
+    public class FollowPlayerSystem: IEcsRunSystem
     {
-        private readonly EcsFilter<CameraTag, FollowComponent, OffsetComponent, TransformComponent>
+        private readonly EcsFilter<FollowPlayerTag, FollowComponent, OffsetComponent, TransformComponent>
             _cameraFollowFilter = null;
         public void Run()
         {

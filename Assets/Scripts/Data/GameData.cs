@@ -6,9 +6,12 @@ namespace Data
     public class GameData: ScriptableObject
     {
         [SerializeField] private PlayerData playerData;
+        [SerializeField] private ObstaclesVariants obstaclesVariants;
 
         public PlayerData PlayerData => playerData;
 
         public static GameData GetFromResources => Resources.Load<GameData>("GameData");
+
+        public ObstaclesVariants ObstaclesVariants => obstaclesVariants;
     }
 }

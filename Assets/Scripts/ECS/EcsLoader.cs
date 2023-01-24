@@ -1,9 +1,9 @@
-using System;
 using Data;
-using ECS.Components.Events;
-using ECS.Systems.CameraSystems;
+using ECS.Components.GameEvents;
+using ECS.Systems.FollowSystems;
 using ECS.Systems.InitSystems;
 using ECS.Systems.InputSystems;
+using ECS.Systems.LevelSystems;
 using ECS.Systems.PlayerSystems;
 using ECS.Systems.UISystems;
 using Leopotam.Ecs;
@@ -35,6 +35,7 @@ namespace ECS
             InitSystems();
             
             InjectToUpdateSystems();
+            AddOneFramesToUpdateSystems();
             InitUpdateSystems();
             
             InitFixedUpdateSystems();
@@ -45,16 +46,20 @@ namespace ECS
             _initSystems.
                 Add(new GameInitSystem()).
                 Add(new PlayerInitSystem()).
-                Add(new CameraInitSystem());
+                Add(new CameraInitSystem()).
+                Add(new GroundInitSystem());
             
             _initSystems.Init();
         }
         private void InitUpdateSystems()
         {
             _updateSystems.
+                Add(new InfiniteLevelSystem()).
+                Add(new SpawnObstaclesSystem()).
                 Add(new InputSystem()).
                 Add(new PlayerInputSystem()).
                 Add(new PlayerDirectionSystem()).
+                Add(new PlayerLoseSystem()).
                 Add(new ViewLoseScreenSystem());
             
             _updateSystems.Init();
@@ -65,7 +70,7 @@ namespace ECS
             _fixedUpdateSystems.
                 Add(new PlayerMoveSystem()).
                 Add(new PlayerCollisionSystem()).
-                Add(new CameraFollowSystem());
+                Add(new FollowPlayerSystem());
             
             _fixedUpdateSystems.Init();
         }
@@ -74,12 +79,20 @@ namespace ECS
         {
             _initSystems.
                 Inject(_gameData.PlayerData).
-                Inject(_mainCamera);
+                Inject(_mainCamera).
+                Inject(_gameData.ObstaclesVariants);
         }
         private void InjectToUpdateSystems()
         {
             _updateSystems.
-                Inject(ui);
+                Inject(ui).
+                Inject(_gameData.ObstaclesVariants);
+        }
+        
+        private void AddOneFramesToUpdateSystems()
+        {
+            _updateSystems.
+                OneFrame<SpawnObstacle>();
         }
 
         void Update()
