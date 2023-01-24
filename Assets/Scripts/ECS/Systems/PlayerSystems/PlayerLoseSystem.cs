@@ -7,7 +7,7 @@ namespace ECS.Systems.PlayerSystems
 {
     public class PlayerLoseSystem: IEcsRunSystem
     {
-        private readonly EcsFilter<PlayerTag,RigidbodyComponent, LoseEvent> _playerLose;
+        private readonly EcsFilter<PlayerTag,RigidbodyComponent,LoseEvent> _playerLose;
 
         public void Run()
         {

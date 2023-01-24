@@ -35,6 +35,7 @@ namespace ECS.Systems.InitSystems
             transformComponent.transform = playerInstance.transform;
             rigidbodyComponent.rigidbody = playerInstance.GetComponent<Rigidbody>();
             rigidbodyComponent.rigidbody.centerOfMass += Vector3.up*2f;
+            rigidbodyComponent.rigidbody.isKinematic = true;
             playerInstance.GetComponent<PlayerCollisionChecker>().Init(entityReference);
         }
 

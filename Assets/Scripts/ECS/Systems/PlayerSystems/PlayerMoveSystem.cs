@@ -19,6 +19,9 @@ namespace ECS.Systems.PlayerSystems
                 ref var rigidbodyComponent = ref _playerMoveFilter.Get2(i);
                 ref var moveComponent = ref _playerMoveFilter.Get3(i);
 
+                if (rigidbodyComponent.rigidbody.isKinematic)
+                    rigidbodyComponent.rigidbody.isKinematic = false;
+
                 var dir = rigidbodyComponent.rigidbody.transform.up;
                 
                 rigidbodyComponent.rigidbody.

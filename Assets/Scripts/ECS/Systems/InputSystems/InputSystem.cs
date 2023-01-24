@@ -1,4 +1,5 @@
-﻿using ECS.Components;
+﻿using Data;
+using ECS.Components;
 using ECS.Components.InputComponents;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace ECS.Systems.InputSystems
 {
     public class InputSystem: IEcsRunSystem
     {
+        private readonly InputData _inputData = null;
         private readonly EcsFilter<DragComponent> _dragFilter = null;
         
         public void Run()
@@ -32,7 +34,7 @@ namespace ECS.Systems.InputSystems
                 else if (Input.GetMouseButton(0))
                 {
                     dragComponent.previousTouchPosition = dragComponent.currentTouchPosition;
-                    dragComponent.currentTouchPosition = Input.mousePosition;
+                    dragComponent.currentTouchPosition = Input.mousePosition * _inputData.Sensitivity;
                     dragComponent.dragState = DragState.Dragging;
                 }
                 else

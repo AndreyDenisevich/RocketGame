@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ce2e3f7d49395644aa105598b5e77c55, type: 2}
+  inputData: {fileID: 11400000, guid: 046bec5d1e9bda44ba1536125226c8a5, type: 2}
   obstaclesVariants: {fileID: 11400000, guid: 35f19454ed06c7140976014c3ba41143, type: 2}

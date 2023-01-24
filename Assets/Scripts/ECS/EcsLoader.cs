@@ -86,7 +86,8 @@ namespace ECS
         {
             _updateSystems.
                 Inject(ui).
-                Inject(_gameData.ObstaclesVariants);
+                Inject(_gameData.ObstaclesVariants).
+                Inject(_gameData.InputData);
         }
         
         private void AddOneFramesToUpdateSystems()

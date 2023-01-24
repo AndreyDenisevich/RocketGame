@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 3283054909566043850, guid: 99386123c08f4c347bbae2139ce04b47, type: 3}
   - {fileID: 3283054909566043850, guid: ec2de0c56cd3f23488c349c2f1fc7cee, type: 3}
   - {fileID: 3283054909566043850, guid: 122866da894259e41a957a3270fbdecf, type: 3}
+  - {fileID: 3283054909566043850, guid: 3a4b63cbaf22a0046a8e3e04fd3f88be, type: 3}
   _groundPrefab: {fileID: 8488242355806059310, guid: a7f2d11c28e9a3b45b4b9efad3685a77, type: 3}
