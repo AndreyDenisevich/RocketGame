@@ -1,4 +1,5 @@
-﻿using ECS.Components.Blocks;
+﻿using Data;
+using ECS.Components.Blocks;
 using ECS.Components.InputComponents;
 using ECS.Components.Tags;
 using ECS.Components.TransformComponents;
@@ -9,6 +10,7 @@ namespace ECS.Systems.PlayerSystems
 {
     public class PlayerInputSystem: IEcsRunSystem
     {
+        private readonly InputData _inputData = null;
         private readonly EcsFilter<PlayerTag, DragComponent, DirectionComponent> _playerDirectionFilter = null;
         public void Run()
         {
@@ -26,6 +28,7 @@ namespace ECS.Systems.PlayerSystems
                     case DragState.Dragging:
                         var dir = 
                             (dragComponent.currentTouchPosition - dragComponent.previousTouchPosition).normalized;
+                        dir *= _inputData.Sensitivity;
                         dir.y = 1f;
                         directionComponent.direction = 
                             Vector3.Lerp(directionComponent.direction, 

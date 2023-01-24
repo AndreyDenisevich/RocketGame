@@ -34,7 +34,7 @@ namespace ECS.Systems.InputSystems
                 else if (Input.GetMouseButton(0))
                 {
                     dragComponent.previousTouchPosition = dragComponent.currentTouchPosition;
-                    dragComponent.currentTouchPosition = Input.mousePosition * _inputData.Sensitivity;
+                    dragComponent.currentTouchPosition = Input.mousePosition;
                     dragComponent.dragState = DragState.Dragging;
                 }
                 else

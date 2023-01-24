@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8643f35512449b997abf9104e867a51, type: 3}
   m_Name: InputData
   m_EditorClassIdentifier: 
-  sensitivity: 0.5
+  sensitivity: 0.6
